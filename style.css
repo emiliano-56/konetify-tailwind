@@ -1,0 +1,63 @@
+/* Styles for the basic actions panel */
+.panel__basic-actions {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .panel__basic-actions .gjs-btn {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background: #f0f0f0;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .panel__basic-actions .gjs-btn:hover {
+    background: #e0e0e0;
+  }
+
+  .panel__basic-actions .gjs-btn.gjs-ai-button {
+    background: #007bff;
+    color: #fff;
+    border-color: #0056b3;
+  }
+  
+  .panel__basic-actions .gjs-btn.gjs-ai-button:hover {
+    background: #0056b3;
+  }
+  
+  .panel__basic-actions .gjs-btn.gjs-undo-button {
+    background: #28a745;
+    color: #fff;
+    border-color: #1e7e34;
+  }
+  
+  .panel__basic-actions .gjs-btn.gjs-undo-button:hover {
+    background: #1e7e34;
+  }
+  .panel__basic-actions .gjs-btn.gjs-redo-button {
+    background: #ffc107;
+    color: #fff;
+    border-color: #d39e00;
+  }
+  
+  .panel__basic-actions .gjs-btn.gjs-redo-button:hover {
+    background: #d39e00;
+  }
+  .panel__basic-actions .gjs-btn.gjs-publish-button {
+    background: #dc3545;
+    color: #fff;
+    border-color: #bd2130;
+  }
+  
+  .panel__basic-actions .gjs-btn.gjs-publish-button:hover {
+    background: #bd2130;
+  }
+  
+
+

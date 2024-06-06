@@ -1,0 +1,450 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Konetify-Tailwindcss</title>
+    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/grapesjs"></script>
+  
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+
+
+
+       
+       .panel__top {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  position: initial;
+  justify-content: center;
+  justify-content: space-between;
+  background-color: #111720;
+} 
+
+
+
+.panel__basic-actions {
+  position: initial;
+  background-color: #111720;
+}
+
+
+/* Default Styling theme styling */
+/* We can remove the border we've set at the beginning */
+#gjs {
+  border: none;
+}
+/* Theming */
+
+/* Primary color for the background */
+.gjs-one-bg {
+  background-color: #111720;
+}
+
+/* Secondary color for the text color */
+.gjs-two-color {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Tertiary color for the background */
+.gjs-three-bg {
+  background-color: #111720;
+  color: #abbdd3;
+}
+
+/* Quaternary color for the text color */
+.gjs-four-color,
+.gjs-four-color-h:hover {
+  color: #abbdd3;
+}
+
+   /* Projects Name.. */
+   .panel__project-name {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.panel__project-name input {
+  margin-left: 5px;
+  padding: 5px;
+  border: 1px solid #111720;
+  background-color: #111720;
+  color: rgba(255, 255, 255, 0.7);
+}
+.panel__ai-action{
+ position: absolute;
+ left: 0;
+}
+
+
+/* Custom styles for project name */
+.panel__project-name {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);  
+  width: 200px; /* Set a fixed width */
+}
+
+#project-name-display {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#project-name {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  display: none;
+  width: 100%; /* Ensure it takes full width of the container */
+}
+
+ /* Custom styles for the device manager dropdown */ 
+option:hover{
+background-color: #111720 !important;
+color: #abbdd3 !important;
+}
+
+
+ .gjs-select select:focus{
+  /* background-color: #111720 !important; */
+  color: #abbdd3 !important;
+}
+
+    .gjs-devices option {
+      background-color: #111720 !important; /* Change background color of the device options */
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .gjs-devices option:hover {
+      background-color: #111720 !important; /* Change background color of the hovered device options */
+      color: #abbdd3 !important;
+    }
+
+
+   /* Styles for Favicon Upload */
+   .gjs-favicon-button {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 10px;
+      padding: 5px 10px;
+      /* background-color: #444; */
+      /* border: 1px solid #555; */
+      border-radius: 3px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* .gjs-favicon-button:hover {
+      background-color: #555;
+      color: #fff;
+    } */
+
+
+
+ </style>
+  </head>
+  <body>
+
+
+    <!-- Custom panel with buttons -->
+    <!-- <div class="panel__top" id="panel-top">
+      <div class="panel__ai-action" id="button">
+      </div>
+      <div class="panel__basic-actions"></div>
+    </div> -->
+  <!-- Custom panel with buttons -->
+  <div class="panel__top" id="panel-top">
+    <div class="panel__ai-action" id="button"></div>
+    <div class="panel__project-name">
+      <!-- <label for="project-name">Project Name: </label> -->
+      <span id="project-name-display">Untitled Project</span>
+      <input type="text" id="project-name" name="project-name" placeholder="Enter project name" style="display:none;">
+    </div>
+    <div class="panel__basic-actions"></div>
+    <div>
+      <label id="favicon-label"></label>
+    </div>
+  </div>
+    
+
+
+
+
+
+
+    <div id="gjs" style="height:0px; overflow:hidden">
+      <div style="margin:100px 100px 25px; padding:25px; font:caption">
+        This is a demo content from _index.html. You can use this template file for
+        development purpose. It won't be stored in your git repository
+      </div>
+    </div>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', (event) => {
+        setTimeout(() => {
+          const editor = grapesjs.init({
+            height: '100%',
+            container: '#gjs',
+            showOffsets: true,
+            fromElement: true,
+            noticeOnUnload: false,
+            storageManager: false,
+            plugins: ['konetify-tailwind'],
+            pluginsOpts: {
+              'konetify-tailwind': { /* Test here your options */ }
+            },
+            deviceManager: {
+              devices: [
+                { name: 'Desktop', width: '', class: 'gjs-device-desktop' },
+                { name: 'md', width: '768px', class: 'gjs-device-tablet' },
+                { name: 'sm', width: '480px', class: 'gjs-device-mobile-landscape' },
+                { name: 'xs', width: '320px', class: 'gjs-device-mobile-portrait' },
+                { name: 'xl', width: '1024px', class: 'gjs-device-large' },
+                { name: '2xl', width: '1200px', class: 'gjs-device-extra-large' },
+              ]
+            }
+          });
+    
+          // Ensure that the Pages module is accessible
+          const pageManager = editor.Pages;
+    
+          // // Initialize with a home page
+          // const homePage = pageManager.add({
+          //   id: 'home-page',
+          //   name: 'Home',
+          //   component: '<div><nav><a href="#" data-page="contact-page">Contact</a> | <a href="#" data-page="service-page">Service</a> | <a href="#" data-page="testimonies-page">Testimonies</a></nav><h1>Welcome to Home Page</h1></div>',
+          // });
+    
+          // pageManager.select(homePage);
+    
+          // Add custom panel
+          editor.Panels.addPanel({
+            id: 'basic-actions',
+            el: '.panel__basic-actions',
+            buttons: [
+              {
+                id: 'undo-button',
+                className: 'gjs-undo-button',
+                label: 'Undo',
+                command: 'core:undo',
+                attributes: { title: 'Undo' }
+              },
+              {
+                id: 'redo-button',
+                className: 'gjs-redo-button',
+                label: 'Redo',
+                command: 'core:redo',
+                attributes: { title: 'Redo' }
+              },
+              {
+                id: 'favicon-button',
+                className: 'gjs-favicon-button',
+                label: 'Upload Favicon',
+                command: 'open-assets',
+                attributes: { title: 'Upload Favicon' }
+              },
+              {
+                id: 'publish-button',
+                className: 'gjs-publish-button',
+                label: 'Publish',
+                command: 'publish',
+                attributes: { title: 'Publish' }
+              },
+              {
+                id: 'save-button',
+                className: 'gjs-save-button',
+                label: 'Save Work',
+                command: 'save-work',
+                context: 'save-work',
+                attributes: { title: 'save work to library' }
+              },
+              {
+                id: 'add-page',
+                className: 'fa fa-plus',
+                command: 'add-page',
+                attributes: { title: 'Add New Page' }
+              },
+              {
+                id: 'switch-page',
+                className: 'fa fa-exchange',
+                command: 'switch-page',
+                attributes: { title: 'Switch Page' }
+              },
+              {
+                id: 'ai-button',
+                className: 'gjs-ai-button',
+                label: 'AI Assistance',
+                command: 'ai-assistance',
+                context: 'ai-assistance',
+                attributes: { title: 'Yse this feature for writing Utilities classes' }
+              },
+            ],
+          });
+    
+          // Add custom command for the publish button
+          editor.Commands.add('publish', {
+            run(editor, sender) {
+              sender && sender.set('active', 0); // Deactivate button
+              alert('Publish action triggered');
+            }
+          });
+    
+          // Custom commands for save work to the libraries
+          editor.Commands.add('save-work', {
+            run(editor, sender) {
+              sender && sender.set('active', 0); // Deactivate button
+              alert('This feature coming soon....');
+            }
+          });
+    
+          // Add custom command for the AI Assistance button
+          editor.Commands.add('ai-assistance', {
+            run(editor, sender) {
+              sender && sender.set('active', 0); // Deactivate button
+              alert('AI Assistance action triggered');
+            }
+          });
+    
+          // Command to add a new page
+          editor.Commands.add('add-page', {
+            run(editor, sender) {
+              sender.set('active', false);
+              const pageName = prompt('Enter page name');
+              if (pageName) {
+                const pageId = pageName.toLowerCase().replace(/\s+/g, '-') + '-page';
+                pageManager.add({
+                  id: pageId,
+                  name: pageName,
+                  component: `<div><h1>${pageName} Page</h1><a href="#" data-page="home-page">Back to Home</a></div>`,
+                });
+                alert(`Page ${pageName} created!`);
+              }
+            }
+          });
+    
+          // Command to switch to an existing page
+          editor.Commands.add('switch-page', {
+            run(editor, sender) {
+              sender.set('active', false);
+              const pages = pageManager.getAll();
+              const pageNames = pages.map(page => page.get('name')).join('\n');
+              const pageName = prompt(`Enter page name to switch to:\n${pageNames}`);
+              if (pageName) {
+                const page = pages.find(page => page.get('name') === pageName);
+                if (page) {
+                  pageManager.select(page);
+                  alert(`Switched to ${pageName} page!`);
+                } else {
+                  alert('Page not found!');
+                }
+              }
+            }
+          });
+    
+          // Handle navigation link clicks to switch pages
+          const switchPage = (pageId) => {
+            const page = pageManager.get(pageId);
+            if (page) {
+              pageManager.select(page);
+            }
+          };
+    
+          editor.on('load', () => {
+            editor.Canvas.getBody().addEventListener('click', (event) => {
+              const target = event.target;
+              if (target.tagName === 'A' && target.dataset.page) {
+                event.preventDefault();
+                switchPage(target.dataset.page);
+              }
+            });
+          });
+    
+          // Ensure drag-and-drop functionality remains intact
+          editor.on('load', () => {
+            const canvas = editor.Canvas.getElement();
+            canvas.style.height = '100%';
+            editor.on('component:selected', (model) => {
+              if (model.get('type') === 'link') {
+                const link = model.view.el;
+                link.onclick = (e) => e.preventDefault();
+              }
+            });
+          });
+    
+
+          // Toggle between span and input field
+          const projectNameDisplay = document.getElementById('project-name-display');
+          const projectNameInput = document.getElementById('project-name');
+    
+          projectNameDisplay.addEventListener('click', () => {
+            projectNameDisplay.style.display = 'none';
+            projectNameInput.style.display = 'inline';
+            projectNameInput.focus();
+          });
+    
+          projectNameInput.addEventListener('blur', () => {
+            const projectName = projectNameInput.value || 'Untitled Project';
+            projectNameDisplay.textContent = projectName;
+            projectNameInput.style.display = 'none';
+            projectNameDisplay.style.display = 'inline';
+          });
+    
+          projectNameInput.addEventListener('input', (event) => {
+            const projectName = event.target.value;
+            document.title = projectName ? `${projectName}.Konetify .app` : 'Konetify Tailwind';
+          });
+    
+          // Favicon upload and set functionality
+          editor.Commands.add('open-assets', {
+            run(editor, sender) {
+              const faviconInput = document.createElement('input');
+              faviconInput.type = 'file';
+              faviconInput.accept = 'image/*';
+              faviconInput.style.display = 'none';
+              faviconInput.onchange = (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (e) => {
+                    const faviconUrl = e.target.result;
+                    let favicon = document.querySelector('link[rel="icon"]');
+                    if (!favicon) {
+                      favicon = document.createElement('link');
+                      favicon.rel = 'icon';
+                      document.head.appendChild(favicon);
+                    }
+                    favicon.href = faviconUrl;
+                    alert('Favicon updated successfully!');
+                  };
+                  reader.readAsDataURL(file);
+                }
+              };
+              document.body.appendChild(faviconInput);
+              faviconInput.click();
+              document.body.removeChild(faviconInput);
+              sender && sender.set('active', 0); // Deactivate button
+            }
+          });
+    
+        }, 100);
+      });
+    </script>
+    
+
+  </body>
+</html>
